@@ -22,8 +22,10 @@ file_name = "output.html"
 updated_file_name = "output_updated.html"
 
 # Configure Streamlit for Replit
-import streamlit.web.bootstrap as bootstrap
-bootstrap.STREAMLIT_AUTO_OPEN_BROWSER = False
+if 'STREAMLIT_SERVER_PORT' not in os.environ:
+    os.environ['STREAMLIT_SERVER_PORT'] = '8501'
+os.environ['STREAMLIT_SERVER_ADDRESS'] = '0.0.0.0'
+os.environ['STREAMLIT_SERVER_HEADLESS'] = 'true'
 
 st.set_page_config(
     page_title="FigmaChain",
