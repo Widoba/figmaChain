@@ -1,0 +1,30 @@
+Figma configuration:
+Access Token: *********************************************
+Node IDs: 100-66141
+File Key: TZb4Bp241O2fLl2VbHY3tM
+Traceback (most recent call last):
+  File "/home/runner/workspace/generateCode.py", line 40, in <module>
+    index = VectorstoreIndexCreator().from_loaders([figma_loader])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/langchain/indexes/vectorstore.py", line 71, in from_loaders
+    vectorstore = self.vectorstore_cls.from_documents(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/langchain/vectorstores/chroma.py", line 398, in from_documents
+    return cls.from_texts(
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/langchain/vectorstores/chroma.py", line 359, in from_texts
+    chroma_collection = cls(
+                        ^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/langchain/vectorstores/chroma.py", line 92, in __init__
+    self._collection = self._client.get_or_create_collection(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/chromadb/api/client.py", line 201, in get_or_create_collection
+    return Collection(
+           ^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/chromadb/api/models/CollectionCommon.py", line 122, in __init__
+    validate_embedding_function(embedding_function)
+  File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/chromadb/api/types.py", line 487, in validate_embedding_function
+    raise ValueError(
+ValueError: Expected EmbeddingFunction.__call__ to have the following signature: odict_keys(['self', 'input']), got odict_keys(['self', 'args', 'kwargs'])
+Please see https://docs.trychroma.com/guides/embeddings for details of the EmbeddingFunction interface.
+Please note the recent change to the EmbeddingFunction interface: https://docs.trychroma.com/deployment/migration#migration-to-0.4.16---november-7,-2023 
