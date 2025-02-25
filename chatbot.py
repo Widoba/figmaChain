@@ -85,11 +85,11 @@ def generate_response(prompt, html_content):
 
 # Function to render the HTML content using Streamlit's components
 def render_html(html_content):
-    st.write("Debug: Attempting to render HTML content")
-    st.write("Debug: Length of HTML content:", len(html_content))
-    st.write("Debug: First 100 characters:", html_content[:100])
-    components.html(html_content, scrolling=True, height=600, width=800)
-    st.write("Debug: HTML rendering complete")
+    try:
+        with st.container():
+            components.html(html_content, scrolling=True, height=800, width=None)
+    except Exception as e:
+        st.error(f"Error rendering HTML: {str(e)}")
 
 # Function to get the user's input from the text input field
 def get_text():
