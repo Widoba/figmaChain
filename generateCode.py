@@ -3,6 +3,7 @@ import webbrowser
 import argparse
 from langchain.document_loaders.figma import FigmaFileLoader
 from langchain.chat_models import ChatOpenAI
+from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.indexes import VectorstoreIndexCreator
 from langchain.prompts.chat import (
     ChatPromptTemplate,
