@@ -17,3 +17,7 @@ author = 36839236
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "streamlit run chatbot.py"
+
+[[ports]]
+localPort = 8501
+externalPort = 80
