@@ -14,12 +14,27 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+# Validate required environment variables
+required_vars = ['ACCESS_TOKEN', 'NODE_IDS', 'FILE_KEY', 'OPENAI_API_KEY']
+missing_vars = [var for var in required_vars if not os.environ.get(var)]
+
+if missing_vars:
+    print("\nMissing required environment variables:")
+    for var in missing_vars:
+        print(f"- {var}")
+    print("\nPlease add these to your .env file")
+    exit(1)
+
 # Initialize the FigmaFileLoader with environment variables
 figma_loader = FigmaFileLoader(
-    os.environ.get('ACCESS_TOKEN'),
-    os.environ.get('NODE_IDS'),
-    os.environ.get('FILE_KEY'),
+    os.environ['ACCESS_TOKEN'],
+    os.environ['NODE_IDS'],
+    os.environ['FILE_KEY'],
 )
+print("\nFigma configuration:")
+print(f"Access Token: {'*' * len(os.environ['ACCESS_TOKEN'])}")
+print(f"Node IDs: {os.environ['NODE_IDS']}")
+print(f"File Key: {os.environ['FILE_KEY']}")
 
 # Create an index and retriever for Figma documents
 index = VectorstoreIndexCreator().from_loaders([figma_loader])
