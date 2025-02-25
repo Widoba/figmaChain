@@ -21,6 +21,12 @@ openai.api_key = os.environ.get('OPENAI_API_KEY')
 file_name = "output.html"
 updated_file_name = "output_updated.html"
 
+# Configure Streamlit for Replit
+st.set_page_config(
+    page_title="FigmaChain",
+    layout="wide"
+)
+
 st.title('FigmaChain')
 
 # Define the chatbot template
