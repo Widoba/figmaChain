@@ -78,15 +78,17 @@ def generate_response(prompt, html_content):
     )
     return completion
 
-# Function to render the HTML content using Streamlit's markdown function
+# Function to render the HTML content using Streamlit's components
 def render_html(html_content):
-    components.html(html_content, scrolling=True, height=300)
+    components.html(html_content, scrolling=True, height=600, width=800)
 
 # Function to get the user's input from the text input field
 def get_text():
-    # Create a Streamlit input field and return the user's input
-    input_text = st.text_input("", key="input")
+    input_text = st.text_input("Enter your design request:", key="input")
     return input_text
+
+# Add a container for the HTML preview
+st.markdown("### Live Preview")
 
 # Initialize the session state for generated responses and past inputs
 if 'generated' not in st.session_state:
