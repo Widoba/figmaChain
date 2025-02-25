@@ -37,7 +37,10 @@ print(f"Node IDs: {os.environ['NODE_IDS']}")
 print(f"File Key: {os.environ['FILE_KEY']}")
 
 # Create an index and retriever for Figma documents
-index = VectorstoreIndexCreator().from_loaders([figma_loader])
+embeddings = OpenAIEmbeddings()
+index = VectorstoreIndexCreator(
+    embedding=embeddings,
+).from_loaders([figma_loader])
 figma_doc_retreiver = index.vectorstore.as_retriever()
 
 # Define system and human prompt templates
