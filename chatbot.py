@@ -22,6 +22,9 @@ file_name = "output.html"
 updated_file_name = "output_updated.html"
 
 # Configure Streamlit for Replit
+import streamlit.web.bootstrap as bootstrap
+bootstrap.STREAMLIT_AUTO_OPEN_BROWSER = False
+
 st.set_page_config(
     page_title="FigmaChain",
     layout="wide"
